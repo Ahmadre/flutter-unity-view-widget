@@ -1,5 +1,8 @@
 include ':app', ':unity-classes'
 
+include ":UnityExport"
+project(":UnityExport").projectDir = file("./UnityExport")
+
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()

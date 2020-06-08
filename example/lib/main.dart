@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'screens/menu_screen.dart';
 import 'screens/with_ark_screen.dart';
 
-var MyApp = MaterialApp(
+var myApp = MaterialApp(
+  theme: ThemeData(
+    scaffoldBackgroundColor: Colors.white,
+  ),
   title: 'Named Routes Demo',
   // Start the app with the "/" named route. In this case, the app starts
   // on the FirstScreen widget.
   initialRoute: '/',
   routes: {
-  '/': (context) => MenuScreen(),
+  '/': (context) => WithARkitScreen(),
   '/ar': (context) => WithARkitScreen(),
   },
 );
 
-void main() => runApp(MyApp);
+void main() => runApp(myApp);

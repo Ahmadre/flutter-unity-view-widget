@@ -7,8 +7,7 @@ class WithARkitScreen extends StatefulWidget {
 }
 
 class _WithARkitScreenState extends State<WithARkitScreen> {
-  static final GlobalKey<ScaffoldState> _scaffoldKey =
-  GlobalKey<ScaffoldState>();
+  static final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   UnityWidgetController _unityWidgetController;
   double _sliderValue = 0.0;
 
@@ -25,18 +24,32 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
         appBar: AppBar(
           title: const Text('Unity Flutter Demo'),
         ),
-        body: Card(
+        body: Container(
           margin: const EdgeInsets.all(8),
-          clipBehavior: Clip.antiAlias,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
           child: Stack(
             children: <Widget>[
               UnityWidget(
                 onUnityViewCreated: onUnityCreated,
                 isARScene: false,
                 onUnityMessage: onUnityMessage,
+              ),
+              Positioned(
+                top: 20,
+                right: 20,
+                child: RaisedButton.icon(
+                  onPressed: openDriverFrontDoor,
+                  icon: Icon(Icons.lock_open),
+                  label: Text('Tür öffnen'),
+                ),
+              ),
+              Positioned(
+                top: 70,
+                right: 20,
+                child: RaisedButton.icon(
+                  onPressed: closeDriverFrontDoor,
+                  icon: Icon(Icons.lock),
+                  label: Text('Tür schließen'),
+                ),
               ),
               Positioned(
                 bottom: 20,
@@ -50,7 +63,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
                         padding: const EdgeInsets.only(top: 20),
                         child: Text("Rotation speed:"),
                       ),
-                      Slider(
+                      Slider.adaptive(
                         onChanged: (value) {
                           setState(() {
                             _sliderValue = value;
@@ -77,6 +90,22 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
       'Cube',
       'SetRotationSpeed',
       speed,
+    );
+  }
+
+  void openDriverFrontDoor() {
+    _unityWidgetController.postMessage(
+      'Cube',
+      'DoorOpened',
+      'true',
+    );
+  }
+
+  void closeDriverFrontDoor() {
+    _unityWidgetController.postMessage(
+      'Cube',
+      'DoorOpened',
+      'false',
     );
   }
 
