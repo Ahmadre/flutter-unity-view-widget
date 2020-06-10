@@ -9,7 +9,7 @@ public class Rotate : MonoBehaviour, IEventSystemHandler
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         RotateAmount = new Vector3(0, 0, 0);
     }
 
