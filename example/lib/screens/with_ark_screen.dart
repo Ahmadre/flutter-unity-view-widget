@@ -153,16 +153,16 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   void openPassengerFrontDoor() {
     _unityWidgetController.postMessage(
       'Cube',
-      'DoorOpened',
-      'passengerfrontdoor:true',
+      'passengerfrontdoor',
+      'true',
     );
   }
 
   void closePassengerFrontDoor() {
     _unityWidgetController.postMessage(
       'Cube',
-      'DoorOpened',
-      'passengerfrontdoor:false',
+      'passengerfrontdoor',
+      'false',
     );
   }
 

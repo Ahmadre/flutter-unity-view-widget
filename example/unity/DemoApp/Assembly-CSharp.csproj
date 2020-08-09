@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Camera\background.cs" />
      <Compile Include="Assets\CarTransforms\OpenDriverFrontDoor.cs" />
+     <Compile Include="Assets\CarTransforms\OpenPassengerDoor.cs" />
      <Compile Include="Assets\Rotate.cs" />
      <Compile Include="Assets\UnityMessageManager.cs" />
      <None Include="Assets\materials\mirror.shader" />
