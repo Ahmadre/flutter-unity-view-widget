@@ -110,13 +110,13 @@ public class OpenDriverFrontDoor : MonoBehaviour
                 driverfrontdoor(part[1]);
                 break;
             case "passengerfrontdoor":
-                passengerbackdoor(part[1]);
+                passengerfrontdoor(part[1]);
                 break;
             case "trunk":
-                trunkdoor(part[1]);
+                trunkate_trunkdoor(part[1]);
                 break;
             case "frunk":
-                frunkdoor(part[1]);
+                trunkate_frunkdoor(part[1]);
                 break;
             default: break;
         }
@@ -133,12 +133,12 @@ public class OpenDriverFrontDoor : MonoBehaviour
         passenger_front_door_ANIMATOR.SetBool("DoorOpened", bool.Parse(state));
     }
 
-    public void trunkdoor(string state)
+    public void trunkate_trunkdoor(string state)
     {
         trunkdoor_ANIMATOR.SetBool("DoorOpened", bool.Parse(state));
     }
 
-    public void frunkdoor(string state)
+    public void trunkate_frunkdoor(string state)
     {
         frunkdoor_ANIMATOR.SetBool("DoorOpened", bool.Parse(state));
     }
