@@ -82,15 +82,16 @@ public class OpenDriverFrontDoor : MonoBehaviour
     // Awake is called before Start
     void Awake()
     {
-        initDriverFrontDoor();
-        initPassengerFrontDoor();
-        initTrunk();
-        initFrunk();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        initDriverFrontDoor();
+        initPassengerFrontDoor();
+        initTrunk();
+        initFrunk();
     }
 
     // Update is called once per frame

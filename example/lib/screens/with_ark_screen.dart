@@ -11,15 +11,31 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   UnityWidgetController _unityWidgetController;
   double _sliderValue = 0.0;
   String brightness = 'light';
+  Color actualColor;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setBackground();
+    });
+  }
+
+  void setBackground() {
+    final color = Theme.of(context).scaffoldBackgroundColor;
+    _unityWidgetController.postMessage(
+      'MainCamera',
+      'setBackgroundColor',
+      '${color.red},${color.green},${color.blue}',
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: brightness == 'light' ? ThemeMode.light : ThemeMode.dark,
       home: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -34,6 +50,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
               } else {
                 brightness = 'light';
               }
+              setBackground();
             });
           },
         ),
