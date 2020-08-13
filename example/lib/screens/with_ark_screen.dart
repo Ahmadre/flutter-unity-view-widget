@@ -21,6 +21,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         key: _scaffoldKey,
         appBar: AppBar(
           title: const Text('Unity Flutter Demo'),
