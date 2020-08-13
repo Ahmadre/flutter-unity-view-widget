@@ -55,7 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Camera\background.cs" />
      <Compile Include="Assets\CarTransforms\OpenDriverFrontDoor.cs" />
      <Compile Include="Assets\CarTransforms\OpenPassengerDoor.cs" />
      <Compile Include="Assets\Rotate.cs" />
@@ -64,10 +63,13 @@
      <None Include="Assets\materials\doublesided.shader" />
      <None Include="Assets\materials\black_glass.shader" />
      <None Include="Assets\Mezanix\RealisticWoodTextures\0_1_Documentation\Read_me.txt" />
+     <None Include="Assets\materials\RimsTexture.shader" />
      <None Include="Assets\JsonDotNet\link.xml" />
+     <None Include="Assets\materials\Rims.shader" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\materials\glass.shader" />
      <None Include="Assets\Mezanix\RealisticWoodTextures\0_1_Documentation\Textures_List.txt" />
+     <None Include="Assets\materials\Standard_custom.shader" />
  <Reference Include="Unity.XR.Management">
  <HintPath>/Users/rebar/Documents/Flutter_Plugins_Fork/flutter-unity-view-widget/example/unity/DemoApp/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
  </Reference>
