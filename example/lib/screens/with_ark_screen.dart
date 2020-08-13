@@ -16,9 +16,6 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setBackground();
-    });
   }
 
   void setBackground() {
@@ -221,5 +218,6 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   // Callback that connects the created controller to the unity controller
   void onUnityCreated(controller) {
     this._unityWidgetController = controller;
+    setBackground();
   }
 }
