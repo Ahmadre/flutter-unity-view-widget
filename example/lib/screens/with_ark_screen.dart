@@ -28,7 +28,6 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
         floatingActionButton: FloatingActionButton(
           child: Icon(brightness == 'light' ? Icons.brightness_4 : Icons.brightness_7),
           onPressed: () {
-            this.changeBG(brightness);
             setState(() {
               if (brightness == 'light') {
                 brightness = 'dark';
@@ -128,7 +127,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void setRotationSpeed(String speed) {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'SetRotationSpeed',
       speed,
     );
@@ -136,7 +135,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void openDriverFrontDoor() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'driverfrontdoor:true',
     );
@@ -144,7 +143,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void closeDriverFrontDoor() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'driverfrontdoor:false',
     );
@@ -152,23 +151,23 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void openPassengerFrontDoor() {
     _unityWidgetController.postMessage(
-      'Cube',
-      'passengerfrontdoor',
-      'true',
+      'Model3',
+      'DoorOpened',
+      'passengerfrontdoor:true',
     );
   }
 
   void closePassengerFrontDoor() {
     _unityWidgetController.postMessage(
-      'Cube',
-      'passengerfrontdoor',
-      'false',
+      'Model3',
+      'DoorOpened',
+      'passengerfrontdoor:false',
     );
   }
 
   void openTrunk() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'trunk:true',
     );
@@ -176,7 +175,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void closeTrunk() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'trunk:false',
     );
@@ -184,7 +183,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void openFrunk() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'frunk:true',
     );
@@ -192,17 +191,9 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
 
   void closeFrunk() {
     _unityWidgetController.postMessage(
-      'Cube',
+      'Model3',
       'DoorOpened',
       'frunk:false',
-    );
-  }
-
-  void changeBG(String brightness) {
-    _unityWidgetController.postMessage(
-      'MainCamera',
-      'SetBackgroundColor',
-      brightness,
     );
   }
 
