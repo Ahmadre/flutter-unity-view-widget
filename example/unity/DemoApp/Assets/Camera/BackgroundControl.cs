@@ -15,9 +15,10 @@ public class BackgroundControl : MonoBehaviour
     {
     }
 
-    public void setBackgroundColor(string rgbString)
+    public void SetBackgroundColor(string rgbString)
     {
         string[] part = rgbString.Split(',');
-        cam.backgroundColor = new Color(float.Parse(part[0]), float.Parse(part[1]), float.Parse(part[2]));
+        Color color = new Color(float.Parse(part[0]), float.Parse(part[1]), float.Parse(part[2]));
+        cam.backgroundColor = color;
     }
 }

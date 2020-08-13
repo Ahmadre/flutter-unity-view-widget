@@ -18,11 +18,18 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
     super.initState();
   }
 
-  void setBackground() {
-    final color = Theme.of(context).scaffoldBackgroundColor;
+  void setBackground(Color color) {
     _unityWidgetController.postMessage(
       'MainCamera',
-      'setBackgroundColor',
+      'SetBackgroundColor',
+      '${color.red},${color.green},${color.blue}',
+    );
+  }
+
+  void setCarColor(Color color) {
+    _unityWidgetController.postMessage(
+      'Model3',
+      'SetCarColor',
       '${color.red},${color.green},${color.blue}',
     );
   }
@@ -30,8 +37,8 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
+      darkTheme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
       themeMode: brightness == 'light' ? ThemeMode.light : ThemeMode.dark,
       home: Scaffold(
         key: _scaffoldKey,
@@ -44,95 +51,101 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
             setState(() {
               if (brightness == 'light') {
                 brightness = 'dark';
+                setBackground(Colors.black);
               } else {
                 brightness = 'light';
+                setBackground(Colors.white);
               }
-              setBackground();
             });
           },
         ),
         body: Container(
-          margin: const EdgeInsets.all(8),
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              UnityWidget(
-                onUnityViewCreated: onUnityCreated,
-                isARScene: false,
-                onUnityMessage: onUnityMessage,
-              ),
-              Wrap(
-                children: [
-                  RaisedButton.icon(
-                    onPressed: openDriverFrontDoor,
-                    icon: Icon(Icons.lock_open),
-                    label: Text('Fahrertür öffnen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: closeDriverFrontDoor,
-                    icon: Icon(Icons.lock),
-                    label: Text('Fahrertür schließen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: openPassengerFrontDoor,
-                    icon: Icon(Icons.lock_open),
-                    label: Text('Beifahrertür öffnen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: closePassengerFrontDoor,
-                    icon: Icon(Icons.lock),
-                    label: Text('Beifahrertür schließen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: openFrunk,
-                    icon: Icon(Icons.lock_open),
-                    label: Text('Frunk öffnen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: closeFrunk,
-                    icon: Icon(Icons.lock),
-                    label: Text('Frunk schließen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: openTrunk,
-                    icon: Icon(Icons.lock_open),
-                    label: Text('Trunk öffnen'),
-                  ),
-                  RaisedButton.icon(
-                    onPressed: closeTrunk,
-                    icon: Icon(Icons.lock),
-                    label: Text('Trunk schließen'),
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: 20,
-                left: 20,
-                right: 20,
-                child: Card(
-                  elevation: 10,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text("Rotation speed:"),
-                      ),
-                      Slider.adaptive(
-                        onChanged: (value) {
-                          setState(() {
-                            _sliderValue = value;
-                          });
-                          setRotationSpeed(value.toString());
-                        },
-                        value: _sliderValue,
-                        min: 0,
-                        max: 20,
-                      ),
-                    ],
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 300,
+                  width: MediaQuery.of(context).size.width,
+                  child: UnityWidget(
+                    onUnityViewCreated: onUnityCreated,
+                    isARScene: false,
+                    onUnityMessage: onUnityMessage,
                   ),
                 ),
-              ),
-            ],
+                Wrap(
+                  children: [
+                    RaisedButton.icon(
+                      onPressed: openDriverFrontDoor,
+                      icon: Icon(Icons.lock_open),
+                      label: Text('Fahrertür öffnen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: closeDriverFrontDoor,
+                      icon: Icon(Icons.lock),
+                      label: Text('Fahrertür schließen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: openPassengerFrontDoor,
+                      icon: Icon(Icons.lock_open),
+                      label: Text('Beifahrertür öffnen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: closePassengerFrontDoor,
+                      icon: Icon(Icons.lock),
+                      label: Text('Beifahrertür schließen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: openFrunk,
+                      icon: Icon(Icons.lock_open),
+                      label: Text('Frunk öffnen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: closeFrunk,
+                      icon: Icon(Icons.lock),
+                      label: Text('Frunk schließen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: openTrunk,
+                      icon: Icon(Icons.lock_open),
+                      label: Text('Trunk öffnen'),
+                    ),
+                    RaisedButton.icon(
+                      onPressed: closeTrunk,
+                      icon: Icon(Icons.lock),
+                      label: Text('Trunk schließen'),
+                    ),
+                  ],
+                ),
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text("Rotation speed:"),
+                        ),
+                        Slider.adaptive(
+                          onChanged: (value) {
+                            setState(() {
+                              _sliderValue = value;
+                            });
+                            setRotationSpeed(value.toString());
+                          },
+                          value: _sliderValue,
+                          min: 0,
+                          max: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -218,6 +231,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   // Callback that connects the created controller to the unity controller
   void onUnityCreated(controller) {
     this._unityWidgetController = controller;
-    setBackground();
+    setBackground(Theme.of(context).scaffoldBackgroundColor);
+    setCarColor(Colors.red);
   }
 }
