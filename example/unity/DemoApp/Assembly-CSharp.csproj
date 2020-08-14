@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Camera\BackgroundControl.cs" />
      <Compile Include="Assets\CarTransforms\OpenDriverFrontDoor.cs" />
+     <Compile Include="Assets\CarTransforms\Tires\Driving.cs" />
      <Compile Include="Assets\Init.cs" />
      <Compile Include="Assets\PivotModder\Scripts\Non-EditorScripts\CollRecognize.cs" />
      <Compile Include="Assets\PivotModder\Scripts\Non-EditorScripts\DataContainer.cs" />

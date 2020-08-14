@@ -10,6 +10,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   static final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   UnityWidgetController _unityWidgetController;
   double _sliderValue = 0.0;
+  int _speedValue = 0;
   String brightness = 'light';
   Color actualColor;
 
@@ -120,31 +121,42 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
                     ),
                   ],
                 ),
-                Positioned(
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
-                  child: Card(
-                    elevation: 10,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text("Rotation speed:"),
-                        ),
-                        Slider.adaptive(
-                          onChanged: (value) {
-                            setState(() {
-                              _sliderValue = value;
-                            });
-                            setRotationSpeed(value.toString());
-                          },
-                          value: _sliderValue,
-                          min: 0,
-                          max: 20,
-                        ),
-                      ],
-                    ),
+                Spacer(),
+                Card(
+                  elevation: 10,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text("Rotation speed:"),
+                      ),
+                      Slider.adaptive(
+                        onChanged: (value) {
+                          setState(() {
+                            _sliderValue = value;
+                          });
+                          setRotationSpeed(value.toString());
+                        },
+                        value: _sliderValue,
+                        min: 0,
+                        max: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text("Car speed:"),
+                      ),
+                      Slider.adaptive(
+                        onChanged: (value) {
+                          setState(() {
+                            _speedValue = value.toInt();
+                          });
+                          setCarSpeed(value.toInt());
+                        },
+                        value: _speedValue.toDouble(),
+                        min: 0,
+                        max: 100,
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -224,6 +236,14 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
       'Model3',
       'DoorOpened',
       'frunk:false',
+    );
+  }
+
+  void setCarSpeed(int speed) {
+    _unityWidgetController.postMessage(
+      'Model3',
+      'SetCarSpeed',
+      '$speed',
     );
   }
 
