@@ -57,6 +57,10 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\Build.cs" />
      <Compile Include="Assets\Editor\XCodePostBuild.cs" />
+     <Compile Include="Assets\PivotModder\Scripts\Editor\DecoratorEditor.cs" />
+     <Compile Include="Assets\PivotModder\Scripts\Editor\InspectorAttacher.cs" />
+     <Compile Include="Assets\PivotModder\Scripts\Editor\InspectorDrawer.cs" />
+     <Compile Include="Assets\PivotModder\Scripts\Editor\PivotModderMenu.cs" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Users/rebar/Documents/Flutter_Plugins_Fork/flutter-unity-view-widget/example/unity/DemoApp/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
