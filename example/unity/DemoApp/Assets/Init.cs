@@ -2,9 +2,11 @@
 
 public class Init : MonoBehaviour
 {
+    GameObject body;
     // Start is called before the first frame update
     void Start()
     {
+        body = GameObject.Find("other_objetcs_body");
     }
 
     // Update is called once per frame
@@ -17,7 +19,6 @@ public class Init : MonoBehaviour
     {
         string[] part = colorString.Split(',');
         Color color = new Color(float.Parse(part[0]), float.Parse(part[1]), float.Parse(part[2]));
-        Material body = Resources.Load("materials/tesla_white", typeof(Material)) as Material;
-        body.color = color;
+        body.GetComponent<Renderer>().material.color = color;
     }
 }

@@ -27,11 +27,13 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
   }
 
   void setCarColor(Color color) {
-    _unityWidgetController.postMessage(
-      'Model3',
-      'SetCarColor',
-      '${color.red},${color.green},${color.blue}',
-    );
+    Future.delayed(const Duration(seconds: 2), () {
+      _unityWidgetController.postMessage(
+        'Model3',
+        'SetCarColor',
+        '${color.red},${color.green},${color.blue}',
+      );
+    });
   }
 
   @override
@@ -56,6 +58,7 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
                 brightness = 'light';
                 setBackground(Colors.white);
               }
+              setCarColor(Colors.red);
             });
           },
         ),
