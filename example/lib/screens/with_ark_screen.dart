@@ -67,6 +67,8 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
                   height: 300,
@@ -121,42 +123,43 @@ class _WithARkitScreenState extends State<WithARkitScreen> {
                     ),
                   ],
                 ),
-                Spacer(),
-                Card(
-                  elevation: 10,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text("Rotation speed:"),
-                      ),
-                      Slider.adaptive(
-                        onChanged: (value) {
-                          setState(() {
-                            _sliderValue = value;
-                          });
-                          setRotationSpeed(value.toString());
-                        },
-                        value: _sliderValue,
-                        min: 0,
-                        max: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text("Car speed:"),
-                      ),
-                      Slider.adaptive(
-                        onChanged: (value) {
-                          setState(() {
-                            _speedValue = value.toInt();
-                          });
-                          setCarSpeed(value.toInt());
-                        },
-                        value: _speedValue.toDouble(),
-                        min: 0,
-                        max: 100,
-                      ),
-                    ],
+                Flexible(
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text("Rotation speed:"),
+                        ),
+                        Slider.adaptive(
+                          onChanged: (value) {
+                            setState(() {
+                              _sliderValue = value;
+                            });
+                            setRotationSpeed(value.toString());
+                          },
+                          value: _sliderValue,
+                          min: 0,
+                          max: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text("Car speed:"),
+                        ),
+                        Slider.adaptive(
+                          onChanged: (value) {
+                            setState(() {
+                              _speedValue = value.toInt();
+                            });
+                            setCarSpeed(value.toInt());
+                          },
+                          value: _speedValue.toDouble(),
+                          min: 0,
+                          max: 100,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
