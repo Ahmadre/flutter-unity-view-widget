@@ -58,6 +58,7 @@
      <Compile Include="Assets\Camera\BackgroundControl.cs" />
      <Compile Include="Assets\CarTransforms\OpenDriverFrontDoor.cs" />
      <Compile Include="Assets\CarTransforms\Tires\Driving.cs" />
+     <Compile Include="Assets\GradientBackground\Scripts\GradientBackground.cs" />
      <Compile Include="Assets\Init.cs" />
      <Compile Include="Assets\PivotModder\Scripts\Non-EditorScripts\CollRecognize.cs" />
      <Compile Include="Assets\PivotModder\Scripts\Non-EditorScripts\DataContainer.cs" />
@@ -82,6 +83,8 @@
      <None Include="Assets\materials\RimsTexture.shader" />
      <None Include="Assets\JsonDotNet\link.xml" />
      <None Include="Assets\materials\Rims.shader" />
+     <None Include="Assets\GradientBackground\Shaders\GradientBackgroundCore.cginc" />
+     <None Include="Assets\GradientBackground\Shaders\GradientBackground.shader" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\materials\glass.shader" />
      <None Include="Assets\Mezanix\RealisticWoodTextures\0_1_Documentation\Textures_List.txt" />
